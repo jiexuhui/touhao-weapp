@@ -1,0 +1,80 @@
+<!--pages/user/user.wxml-->
+
+<view class='usercenter'>
+  <!-- <image class='bg' src='/images/bg.png'></image> -->
+</view>
+
+
+<form bindsubmit="reviewSubmit" bindreset="formReset">
+<!--基本信息盒模型  -->
+<view class='basic' wx:if="{{cgoods.length>0}}">
+  <!--名字部分  -->
+  <view class='namebox'>
+    <text class='name'>我的播单名称：</text>
+    <image class='nameicon' src='/images/righticon.png'></image>
+    <input name="livename" placeholder-class='textcolor' class='nametext'></input>
+  </view>
+
+  <picker class='title1' mode="date" start="2018-05-20" bindchange="setStartDate">
+    <view class='namebox'>
+      <text class='name'>直播开始日期：</text>
+      <image class='nameicon' src='/images/righticon.png'></image>
+      <input name="livedate" placeholder-class='textcolor' class='nametext' value='{{startDate}}'></input>
+    </view>
+  </picker>
+
+  <picker class='title1' mode="time" start="08:00" bindchange="setStartTime">
+    <view class='namebox'>
+      <text class='name'>直播开始时间：</text>
+      <image class='nameicon' src='/images/righticon.png'></image>
+      <input name="livestime" placeholder-class='textcolor' class='nametext' value='{{startTime}}'></input>
+    </view>
+  </picker>
+
+  <picker class='title1' mode="time" start="20:00" bindchange="setEndTime">
+    <view class='namebox'>
+      <text class='name'>直播结束时间：</text>
+      <image class='nameicon' src='/images/righticon.png'></image>
+      <input name="liveetime" placeholder-class='textcolor' class='nametext' value='{{endTime}}'></input>
+    </view>
+  </picker>
+
+  <view class='projectbox'>
+    <!--第一部分  -->
+    <view class='project' wx:for="{{cgoods}}">
+        <image class='headimage' src='{{item.thumb_main}}'></image>
+        <view class='projecttext'>
+          <text class='biaoti'>{{item.goods_name}}</text>
+          <text class='jianjie' space="emsp">价格：{{item.price}} 库存:{{item.storenum}}</text>
+          <text class='jianjie'>每件佣金:￥{{item.commission}}</text>
+          <text class='field'>标签：{{item.tagname}}</text>
+        </view>
+        <view >
+          <image class="anniu1" src='/images/delete.png' data-index='{{index}}' bindtap='delGoods'></image>
+        </view>
+    </view>
+  </view>
+
+  <view>
+    <view class="book">
+      <checkbox-group bindchange="checkboxChange" name="isbook">
+        <label class="isbook" >
+          <checkbox name="isbook" value="{{isbook}}"  checked="{{isbook}}"/>订阅直播报告
+        </label>
+      </checkbox-group>
+    </view> 
+    <button class="review" formType="submit" hover-class="other-button-hover"> 提交 </button>   
+  </view>
+
+</view>
+<view class='usercenter' wx:else>
+  <image class='bg' src='/images/bg.png'></image>
+
+  <view class='head'>
+    <image class='headphoto' src='{{userInfo.avatarUrl}}'></image>
+    <view class='nicknamebg'><text class ='nickname'>您的播单控控如也~~</text></view>
+  </view>
+  <navigator class='back' open-type="navigateBack">去赚取佣金></navigator> 
+</view>
+</form>
+

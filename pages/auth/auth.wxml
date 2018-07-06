@@ -1,0 +1,12 @@
+<!--pages/user/user.wxml-->
+<!-- <view wx:if="{{!hasUserInfo}}" class='userinfo_auth'>
+    <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+  </view> -->
+<!-- <template name="userPannel"> -->
+<!--背景  -->
+  <image class='bg' src="/images/bg.png"></image>
+  <view wx:if="{{!hasUserInfo}}" class='userinfo_auth'>
+    <button type='primary' wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">我是主播</button>
+    <button wx:if="{{canIUse}}" disabled='true' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">我是商家(暂未开放)</button>
+  </view>
+<!-- </template> -->

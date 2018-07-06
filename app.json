@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/auth/auth",
+    "pages/index/index",
+    "pages/join/join",
+    "pages/publication/publication",
+    "pages/pageopen/pageopen",
+    "pages/user/user",
+    "pages/logs/logs",
+    "pages/welcome/welcome",
+    "pages/reports/reports",
+    "pages/goods/goods",
+    "pages/anchorcase/anchorcase"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "微岛主播小助手",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#fafafa",
+    "borderStyle": "white",
+    "selectedColor": "#b4282d",
+    "color": "#666",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/ic_menu_topic_nor.png",
+        "selectedIconPath": "images/ic_menu_topic_pressed.png",
+        "text": "预约直播"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "images/ic_menu_me_nor.png",
+        "selectedIconPath": "images/ic_menu_me_pressed.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "debug": false
+}

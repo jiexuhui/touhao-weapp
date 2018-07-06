@@ -1,0 +1,66 @@
+<!--pages/user/user.wxml-->
+
+<view class='usercenter'>
+  <image class='bg' src='/images/bg.png'></image>
+
+  <view class='head'>
+    <image class='headphoto' src='{{userinfo.avatarUrl}}'></image>
+    <view class='nicknamebg'><text class ='nickname'>{{userinfo.nickName}}</text></view>
+    <!-- <view class='photobg'>
+      <image class='camera' src='/images/camera.png'></image>
+    </view> -->
+  </view>
+</view>
+
+
+<!--基本信息盒模型  -->
+<view class='basic'>
+   <!--功能盒模型  -->
+    <view class='function'>
+      <text class='basictext'>基本信息</text>
+      <navigator url="/pages/welcome/welcome" class='edituser'>修改信息</navigator>
+    </view>
+
+  <!--名字部分  -->
+  <view class='namebox'>
+    <text class='name'>姓名</text>
+    <image class='nameicon' src='/images/righticon.png'></image>
+    <text class='nametext'>{{userinfo.realname}}</text>
+  </view>
+
+  <!--手机号部分  -->
+  <view class='namebox'>
+    <text class='name'>联系方式</text>
+    <image class='nameicon' src='/images/righticon.png'></image>
+    <text class='nametext'>{{userinfo.phone}}</text>
+  </view>
+
+  <!--微信号  -->
+  <view class='namebox'>
+    <text class='name'>微信号</text>
+    <image class='nameicon' src='/images/righticon.png'></image>
+    <text class='nametext'>{{userinfo.wechataccount}}</text>
+  </view>
+
+  <!--直播间ID  -->
+  <view class='namebox'>
+    <text class='name'>直播间ID</text>
+    <image class='nameicon' src='/images/righticon.png'></image>
+    <text class='nametext'>{{userinfo.anchorroomid}}</text>
+  </view>
+
+</view>
+
+<view class='report'>
+   <!--功能盒模型  -->
+    <view class='function'>
+      <navigator url="/pages/reports/reports">
+        <text class='reporttext'>直播报告</text>
+        <image class='nameicon' src='/images/righticon.png'></image>
+      </navigator>
+    </view>
+
+</view>
+
+
+<!-- <navigator class='back' open-type="navigateBack">返回</navigator> -->

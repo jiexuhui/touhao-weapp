@@ -1,0 +1,83 @@
+<!--pages/user/user.wxml-->
+
+<view class='usercenter'>
+  <image class='bg' src='/images/bg.png'></image>
+
+  <view class='head'>
+    <image class='headphoto' src='{{userInfo.avatarUrl}}'></image>
+    <view class='nicknamebg'><text class ='nickname'>{{userInfo.nickName}}</text></view>
+    <!-- <view class='photobg'>
+      <image class='camera' src='/images/camera.png'></image>
+    </view> -->
+  </view>
+</view>
+
+
+<form bindsubmit="reviewSubmit" bindreset="formReset">
+  <!--基本信息盒模型  -->
+  <view class='basic'>
+    <text class='basictext'>基本信息</text>
+    <!--名字部分  -->
+    <view class='namebox'>
+      <text class='name'>姓名</text>
+      <image class='nameicon' src='/images/righticon.png'></image>
+      <input name="realname" placeholder-class='textcolor' class='nametext' value='{{userInfo.realname}}'></input>
+    </view>
+
+    <!--手机号部分  -->
+    <view class='namebox'>
+      <text class='name'>手机号</text>
+      <image class='nameicon' src='/images/righticon.png'></image>
+      <input value='{{userInfo.phone}}' name="phone" placeholder-class='textcolor' class='nametext' type='number' bindblur="validPhone"></input>
+    </view>
+
+    <!--微信号  -->
+    <view class='namebox'>
+      <text class='name'>微信号</text>
+      <image class='nameicon' src='/images/righticon.png'></image>
+      <input value='{{userInfo.wechataccount}}' name="wechat" placeholder-class='textcolor' class='nametext'></input>
+    </view>
+
+    <!--淘宝直播间ID  -->
+    <view class='namebox'>
+      <text class='name'>淘宝直播间ID</text>
+      <image class='nameicon' src='/images/righticon.png'></image>
+      <input value='{{userInfo.anchorroomid}}' name="taobao" placeholder-class='textcolor' class='nametext' type='number'></input>
+    </view>
+
+    <view>
+        <view class="book">
+          <checkbox-group bindchange="checkboxChange" name="isbook">
+            <label class="isbook" >
+              <checkbox name="isbook" value="{{isbook}}"  checked="{{isbook}}"/>订阅审核通过通知
+            </label>
+          </checkbox-group>
+          <!-- <radio name="isbook" class="isbook" bindchange="checkboxChange" checked="{{isbook}}" value='{{isbook}}'/>
+          <text class=''>订阅审核通过通知</text> -->
+        </view> 
+        <button class="review" formType="submit" hover-class="other-button-hover"> 提交审核 </button>   
+    </view>
+    <!--擅长领域  -->
+    <!-- <view class='namebox'>
+      <text class='name'>擅长领域</text>
+      <image class='nameicon' src='/images/righticon.png'></image>
+      <picker bindchange="pickerFiled" value="{{fileds[fIndex]}}" range="{{fileds}}">
+        <view class="field">{{fileds[fIndex]}}</view>
+      </picker>
+
+    </view> -->
+
+    <!--微博状态  -->
+    <!-- <view class='namebox'>
+      <text class='name'>微博状态</text>
+      <image class='nameicon' src='/images/righticon.png'></image>
+      <picker bindchange="pickerStatus" value="{{sIndex}}" range="{{status}}">
+        <view class="mode">{{status[sIndex]}}</view>
+      </picker>
+    </view> -->
+
+  </view>
+
+</form>
+
+<!-- <navigator class='back' open-type="navigateBack">返回</navigator> -->

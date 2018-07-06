@@ -1,0 +1,41 @@
+<!--pages/pageopen/pageopen.wxml-->
+
+<!--index.wxml-->
+<!--商品主图  -->
+<image class="toutu" mode="aspectFill" src='{{goodsdetail.thumb_main}}'></image>
+<view class="service-policy">
+  <!-- <view class="item">30天无忧退货</view> -->
+  <!-- <view class="item">48小时快速退款</view> -->
+  <!-- <view class="item">满88元免邮费</view> -->
+</view>
+<view class="goods-info">
+  <view class="c">
+    <text class="title1">{{goodsdetail.goods_name}}</text>
+    <text class="desc">{{goodsdetail.tagname}}</text>
+    <text class='wenben1' space='emsp'>价格：￥{{goodsdetail.price}} 库存：￥{{goodsdetail.storenum}}</text>
+    <text class="price" space='emsp'>佣金：￥{{goodsdetail.commission}}</text>
+  </view>
+</view>
+
+<!--标题分割线  -->
+<text class='line'></text>
+
+
+<!--内容板块  -->
+<view class="content" wx:for="{{thumbs}}" wx:key="index" >
+
+  <image class='contentimg1' src='{{item}}'></image>
+
+</view>
+
+
+<view bindtap='adddetial' wx:if="{{goodsdetail.isadd == 0}}">
+  <image class="add_icon" src='/images/addlist.png'  bindtap='adddetial'></image>
+</view>
+<view wx:else>
+  <image  mode='aspectFill' class="add_icon" src='/images/add.png' bindtap='adddetial'></image>
+</view>
+
+  <view>
+    <image class="list_icon" src='/images/list.png'  bindtap='jumplist'></image>
+  </view>

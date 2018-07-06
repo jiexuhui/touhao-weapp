@@ -1,0 +1,16 @@
+
+<view class='projectbox'>
+  <!--第一部分  -->
+  <view class='project' wx:for="{{reports}}">
+      <image class='headimage' src='http://img.zcool.cn/community/01ca005b02587ba801218cf4fe698a.gif'></image>
+      <view class='projecttext'>
+        <text class='biaoti'>{{item.proname}}直播报告</text>
+        <text class='jianjie' space="emsp">售出：{{item.snum}} 总计:{{item.stotal}}</text>
+        <text class='jianjie'> 时长:{{item.ptime}}分钟</text>
+        <text class='field'>时间：{{item.ctime}}</text>
+      </view>
+      <navigator url='/pages/pageopen/pageopen?id={{item.id}}'>
+        <view class='openpush'></view>
+      </navigator>
+  </view>
+</view>

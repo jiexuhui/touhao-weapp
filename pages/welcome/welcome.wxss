@@ -1,0 +1,181 @@
+/* pages/user/user.wxss */
+
+/*虚化背景  */
+
+page {
+  min-height: 100vh;
+  position: relative;
+}
+
+.bg {
+  width: 750rpx;
+  height: 100%;
+  position: absolute;
+}
+
+/*头部盒模型  */
+
+.head {
+  display: table;
+  position: relative;
+  padding-top: 50rpx;
+  margin: 0 auto;
+}
+
+/*头部照片  */
+
+.headphoto {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  /* box-shadow: 0px 5px 2px #888888; */
+}
+
+/*昵称  */
+
+.nicknamebg {
+  width: 150rpx;
+  height: 50rpx;
+  /* background-color: #ffd92e;  */
+  position: absolute;
+  border-radius: 50%;
+  top: 200rpx;
+  right: -10px;
+}
+
+.nickname {
+  font-size: 30rpx;
+  color: #828282;
+}
+
+/*相机icon  */
+
+.camera {
+  width: 26rpx;
+  height: 24rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -12rpx;
+  margin-left: -13rpx;
+  z-index: 1;
+}
+
+/*基本信息  */
+
+.basic {
+  padding-left: 20px;
+  display: block;
+  padding-right: 40rpx;
+  width: 100%;
+  margin-top: 70rpx;
+}
+
+/*信息文本  */
+
+.basictext {
+  font-size: 30rpx;
+  color: #828282;
+  display: block;
+}
+
+.namebox {
+  width: 100%;
+  height: 60rpx;
+  border-bottom: 1rpx solid #828282;
+  margin-top: 30rpx;
+  padding-bottom: 70rpx;
+}
+
+.name {
+  font-size: 33rpx;
+  color: #2f2f2f;
+  float: left;
+}
+
+.nametext {
+  font-size: 33rpx;
+  color: #828282;
+  float: right;
+  padding-right: 25rpx;
+  text-align: right;
+}
+
+.mode {
+  position: relative;
+  z-index: 1;
+  font-size: 33rpx;
+  color: #828282;
+  float: right;
+  padding-right: 25rpx;
+  text-align: right;
+}
+
+.field{
+  position: relative;
+  z-index: 1;
+  font-size: 33rpx;
+  color: #828282;
+  float: right;
+  padding-right: 25rpx;
+  text-align: right;
+}
+
+.nameicon {
+  width: 18rpx;
+  height: 32rpx;
+  float: right;
+  padding-top: 8rpx;
+  padding-right: 5rpx;
+}
+
+.review {
+  font-size: 30rpx;
+  color: #ffd92e;
+  display: block;
+  text-align: center;
+  line-height: 70rpx;
+  width: 300rpx;
+  height: 80rpx;
+  background-color: rgba(255, 255, 255, 0);
+  border: 3rpx solid #ffd92e;
+  border-radius: 25rpx;
+  position: absolute;
+  margin-top: 80rpx;
+  left: 30%;
+}
+
+.book {
+  display: block;
+  zoom:60%;
+  position: absolute;
+  margin-top: 280rpx;
+  left: 33%;
+  font-size: 40rpx;
+}
+
+/*  重写 radio 样式  */
+/* 未选中的 背景样式 */
+radio .wx-radio-input{
+   border-radius: 50%;/* 圆角 */
+   width: 40rpx;
+   height: 40rpx;
+}
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+radio .wx-radio-input.wx-radio-input-checked{
+   border: none;
+   background: red;
+}
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+radio .wx-radio-input.wx-radio-input-checked::before{
+   border-radius: 50%;/* 圆角 */
+   width: 40rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+   height: 40rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+   line-height: 40rpx;
+   text-align: center;
+   font-size:30rpx; /* 对勾大小 30rpx */
+   color:#fff; /* 对勾颜色 白色 */
+   background: transparent;
+   transform:translate(-50%, -50%) scale(1);
+   -webkit-transform:translate(-50%, -50%) scale(1);
+}
