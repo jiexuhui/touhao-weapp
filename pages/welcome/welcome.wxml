@@ -13,7 +13,7 @@
 </view>
 
 
-<form bindsubmit="reviewSubmit" bindreset="formReset">
+<form bindsubmit="reviewSubmit" bindreset="formReset" report-submit='true'>
   <!--基本信息盒模型  -->
   <view class='basic'>
     <text class='basictext'>基本信息</text>

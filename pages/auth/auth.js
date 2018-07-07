@@ -14,11 +14,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (app.globalData.hasUserInfo) {
-      wx.reLaunch({
-        url: "/pages/index/index",
-      })
-    }
+    // if (app.globalData.hasUserInfo) {
+    //   // wx.reLaunch({
+    //   //   url: "/pages/index/index",
+    //   // })
+    // }
   },
 
   /**

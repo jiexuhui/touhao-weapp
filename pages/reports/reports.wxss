@@ -364,3 +364,50 @@
   right: 0rpx;
   z-index: 0;
 } 
+
+/*头部盒模型  */
+
+.head {
+  display: table;
+  position: relative;
+  padding-top: 50rpx;
+  margin: 0 auto;
+  margin-left: 130% 
+}
+
+/*头部照片  */
+
+.headphoto {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  /* box-shadow: 0px 5px 2px #888888; */
+}
+
+/*昵称  */
+
+.nicknamebg {
+  width: 350rpx;
+  height: 50rpx;
+  /* background-color: #ffd92e;  */
+  position: absolute;
+  border-radius: 50%;
+  top: 200rpx;
+  right: -80%;
+}
+.back {
+  font-size: 30rpx;
+  color: #ffd92e;
+  display: block;
+  text-align: center;
+  line-height: 70rpx;
+  width: 250rpx;
+  height: 70rpx;
+  background-color: rgba(255, 255, 255, 0);
+  border: 3rpx solid #ffd92e;
+  border-radius: 25rpx;
+  position: absolute;
+  left: 45%;
+  margin-left: -80rpx; 
+  bottom: 40%;
+}

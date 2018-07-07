@@ -30,16 +30,16 @@ let app = {
   setUserinfo: function (e) {
     //先判断缓存中时候存在用户信息
     let userinfo = wx.getStorageSync(USERINFOKEY)
-    if (!userinfo) {
+    // if (!userinfo) {
       user.loginByWeixin().then(res => {
         // this.setData({
         //   userInfo: res.data.userInfo
         // });
-        console.log("userinfo1:", res);
+        // console.log("userinfo1:", res);
         app.globalData.userInfo = res.data.userinfo;
         app.globalData.token = res.data.token;
         console.log("userinfo:", res.data.userinfo);
-        if (app.globalData.userInfo.isnew === 1){
+        if (res.data.userinfo.isnew === 1){
           wx.reLaunch({
             url: '/pages/welcome/welcome'
           })
@@ -51,11 +51,12 @@ let app = {
       }).catch((err) => {
         console.log(err)
       });
-    } else {
-      wx.reLaunch({
-        url: '/pages/index/index'
-      })
-    }
+    // }
+    //  else {
+    //   wx.reLaunch({
+    //     url: '/pages/index/index'
+    //   })
+    // }
   },
   getUserinfo: function() {
     return wx.getStorageSync(USERINFOKEY)

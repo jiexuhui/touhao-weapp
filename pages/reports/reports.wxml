@@ -1,5 +1,5 @@
 
-<view class='projectbox'>
+<view class='projectbox'  wx:if="{{reports.length>0}}">
   <!--第一部分  -->
   <view class='project' wx:for="{{reports}}">
       <image class='headimage' src='http://img.zcool.cn/community/01ca005b02587ba801218cf4fe698a.gif'></image>
@@ -13,4 +13,14 @@
         <view class='openpush'></view>
       </navigator>
   </view>
+</view>
+
+<view class='usercenter' wx:else>
+  <image class='bg' src='/images/bg.png'></image>
+
+  <view class='head'>
+    <image class='headphoto' src='{{userinfo.avatarUrl}}'></image>
+    <view class='nicknamebg'><text class ='nickname'>暂无直播报告~~</text></view>
+  </view>
+  <navigator class='back' open-type="navigateBack">返回</navigator> 
 </view>

@@ -19,7 +19,7 @@
     <view class='namebox'>
       <text class='name'>直播开始日期：</text>
       <image class='nameicon' src='/images/righticon.png'></image>
-      <input name="livedate" placeholder-class='textcolor' class='nametext' value='{{startDate}}'></input>
+      <text name="livedate" placeholder-class='textcolor' class='nametext'>{{startDate}}</text>
     </view>
   </picker>
 
@@ -27,7 +27,7 @@
     <view class='namebox'>
       <text class='name'>直播开始时间：</text>
       <image class='nameicon' src='/images/righticon.png'></image>
-      <input name="livestime" placeholder-class='textcolor' class='nametext' value='{{startTime}}'></input>
+      <text name="livestime" placeholder-class='textcolor' class='nametext' >{{startTime}}</text>
     </view>
   </picker>
 
@@ -35,7 +35,7 @@
     <view class='namebox'>
       <text class='name'>直播结束时间：</text>
       <image class='nameicon' src='/images/righticon.png'></image>
-      <input name="liveetime" placeholder-class='textcolor' class='nametext' value='{{endTime}}'></input>
+      <text name="liveetime" placeholder-class='textcolor' class='nametext'>{{endTime}}</text>
     </view>
   </picker>
 

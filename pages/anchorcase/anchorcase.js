@@ -136,6 +136,7 @@ Page({
     var pages = getCurrentPages();
     var currPage = pages[pages.length - 1];   //当前页面
     var prevPage = pages[pages.length - 2];
+    console.log("pages:",pages);
     console.log(e);
     var index = e.currentTarget.dataset.index;
 
@@ -146,7 +147,13 @@ Page({
         that.setData({
           cgoods: that.data.cgoods
         });
-        prevPage.goodsList();
+        if(pages.length === 3){
+          pages[1].data.goodsdetail.isadd = 0;
+          pages[1].setData({
+            goodsdetail: pages[1].data.goodsdetail
+          });
+        }
+        pages[0].goodsList();
       } else {
         util.showErrorToast(res.data.msg);
       }

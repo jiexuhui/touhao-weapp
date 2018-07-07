@@ -47,8 +47,8 @@ function request(url, data = {}, method = "GET") {
               request(api.AuthLoginByWeixin, { code: code, userInfo: userInfo }, 'POST').then(res => {
                 if (res.code === 200) {
                   //存储用户信息
-                  wx.setStorageSync('userinfo', res.data.userInfo);
-                  wx.setStorageSync('token', res.data.token);
+                  // wx.setStorageSync('userinfo', res.data.userInfo);
+                  // wx.setStorageSync('token', res.data.token);
 
                   resolve(res);
                 } else {

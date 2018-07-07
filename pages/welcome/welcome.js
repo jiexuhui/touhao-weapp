@@ -44,7 +44,8 @@ Page({
   // },
 
   reviewSubmit: function (e) {
-    console.log('form发生了submit事件，携带数据为：', e.detail.value);
+    console.log('form发生了submit事件，携带数据为formId：', e.detail.formId);
+    var formId = e.detail.formId;
     let params = e.detail.value;
     if(params.realname == "" ){
       util.showErrorToast("姓名不能为空！");
@@ -63,11 +64,11 @@ Page({
       return;
     }
     let userinfo = wx.getStorageSync('userinfo');
-    Object.assign(params,{isbook: params.isbook[0]},userinfo);
+    Object.assign(params, { isbook: params.isbook[0] }, userinfo, {formId:formId});
     console.log("params:", params);
     user.saveUserinfo(params).then(res => {
       console.log("res.data:", res.data);
-       if(res.data.code === 200 ){
+       if(res.code === 200 ){
          wx.switchTab({
            url: '/pages/index/index'
          });
