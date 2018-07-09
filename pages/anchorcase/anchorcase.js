@@ -21,7 +21,8 @@ Page({
       livename: "",
       openid: "",
       goodslist:"",
-      isbook:1
+      isbook:1,
+      formId: ""
     },
     cgoods: []
   },
@@ -55,6 +56,7 @@ Page({
 
   reviewSubmit: function (e) {
     let that = this;
+    var formId = e.detail.formId;
     var pages = getCurrentPages();
     var currPage = pages[pages.length - 1];   //当前页面
     var prevPage = pages[pages.length - 2];
@@ -76,6 +78,7 @@ Page({
       util.showErrorToast("直播结束时间不能为空！");
       return;
     }
+    that.data.params.formId = formId;
     that.data.params.livename = params.livename;
     that.data.params.isbook = params.isbook[0];
     that.data.params.startTime = params.livedate + " " + params.livestime + ":00";
@@ -88,7 +91,6 @@ Page({
       goodslist.push(i.goodsid);
     } 
     that.data.params.goodslist = goodslist.toString();
-    console.log("params:", that.data.params);
     server.applyProgram(that.data.params).then(res => {
       console.log("res:", res);
       if (res.code === 200) {

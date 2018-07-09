@@ -13,7 +13,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.9.98",
 	"appid": "wxa1d8efa9c71da59e",
-	"projectname": "touHao",
+	"projectname": "touhao-weapp",
 	"condition": {
 		"search": {
 			"current": -1,

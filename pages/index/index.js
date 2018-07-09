@@ -116,6 +116,16 @@ Page({
       }
     });
     
+  },
+  /**
+   * 用户点击右上角分享
+   */
+   onShareAppMessage: function () {
+    return {
+      title: '微岛主播小助手',
+      desc: '微岛主播小助手',
+      path: '/pages/index/index'
+    }
   }
 })
 

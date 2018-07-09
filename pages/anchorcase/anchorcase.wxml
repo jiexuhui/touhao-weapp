@@ -5,7 +5,7 @@
 </view>
 
 
-<form bindsubmit="reviewSubmit" bindreset="formReset">
+<form bindsubmit="reviewSubmit" bindreset="formReset" report-submit='true'>
 <!--基本信息盒模型  -->
 <view class='basic' wx:if="{{cgoods.length>0}}">
   <!--名字部分  -->
@@ -15,7 +15,7 @@
     <input name="livename" placeholder-class='textcolor' class='nametext'></input>
   </view>
 
-  <picker class='title1' mode="date" start="2018-05-20" bindchange="setStartDate">
+  <picker class='title1' mode="date" start="2018-05-20" bindchange="setStartDate" name = "livedate">
     <view class='namebox'>
       <text class='name'>直播开始日期：</text>
       <image class='nameicon' src='/images/righticon.png'></image>
@@ -23,19 +23,19 @@
     </view>
   </picker>
 
-  <picker class='title1' mode="time" start="08:00" bindchange="setStartTime">
+  <picker class='title1' mode="time" start="08:00" bindchange="setStartTime" name="livestime">
     <view class='namebox'>
       <text class='name'>直播开始时间：</text>
       <image class='nameicon' src='/images/righticon.png'></image>
-      <text name="livestime" placeholder-class='textcolor' class='nametext' >{{startTime}}</text>
+      <text  placeholder-class='textcolor' class='nametext' >{{startTime}}</text>
     </view>
   </picker>
 
-  <picker class='title1' mode="time" start="20:00" bindchange="setEndTime">
+  <picker name="liveetime"  class='title1' mode="time" start="20:00" bindchange="setEndTime">
     <view class='namebox'>
       <text class='name'>直播结束时间：</text>
       <image class='nameicon' src='/images/righticon.png'></image>
-      <text name="liveetime" placeholder-class='textcolor' class='nametext'>{{endTime}}</text>
+      <text placeholder-class='textcolor' class='nametext'>{{endTime}}</text>
     </view>
   </picker>
 
