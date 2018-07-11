@@ -10,7 +10,11 @@
     "pages/welcome/welcome",
     "pages/reports/reports",
     "pages/goods/goods",
-    "pages/anchorcase/anchorcase"
+    "pages/anchorcase/anchorcase",
+    "pages/catalog/catalog",
+    "pages/category/category",
+    "pages/programs/programs",
+    "pages/programdetail/programdetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -29,6 +33,12 @@
         "iconPath": "images/ic_menu_topic_nor.png",
         "selectedIconPath": "images/ic_menu_topic_pressed.png",
         "text": "预约直播"
+      },
+      {
+        "pagePath": "pages/catalog/catalog",
+        "iconPath": "images/ic_menu_sort_nor.png",
+        "selectedIconPath": "images/ic_menu_sort_pressed.png",
+        "text": "分类"
       },
       {
         "pagePath": "pages/user/user",

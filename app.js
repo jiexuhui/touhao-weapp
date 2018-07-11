@@ -26,6 +26,19 @@ let app = {
 
     });
   },
+  onShow: function (options) {
+    // Do something when show.
+    let userinfo = wx.getStorageSync(USERINFOKEY)
+    if(!userinfo){
+      wx.reLaunch({
+        url: '/pages/auth/auth'
+      });
+    }else {
+      wx.reLaunch({
+        url: '/pages/index/index'
+      });
+    }
+  },
   //获取用户信息
   setUserinfo: function (e) {
     //先判断缓存中时候存在用户信息

@@ -16,7 +16,9 @@ Page({
     duration: 800,
     isShowUserPannel:false, //是否显示个人中心面板
     goodslist:[],
-    addgoods:[]
+    addgoods:[],
+    classify:[],
+    activeCategoryId: 1,
   },
   onLoad: function () {
     this.setData({
@@ -25,15 +27,23 @@ Page({
     this.goodsList();
   },
 
+  tabClick: function (e) {
+    this.setData({
+      activeCategoryId: e.currentTarget.id
+    });
+    this.goodsList();
+  },
+
   goodsList: function () {
     let that = this;
-    server.goodsList({ openid: that.data.userInfo.openid }).then(res => {
+    server.goodsList({ openid: that.data.userInfo.openid, classify: this.data.activeCategoryId}).then(res => {
       console.log("res:", res);
       console.log("data0:", res.data);
       if (res.code === 200) {
         that.setData({
           goodslist: res.data[0],
-          imgUrls: res.data[1]
+          imgUrls: res.data[1],
+          classify: res.data[2]
         });
       } else {
         util.showErrorToast(res.data.msg);
@@ -116,6 +126,10 @@ Page({
       }
     });
     
+  },
+  onShow: function () {
+    // 页面显示
+    this.goodsList();
   },
   /**
    * 用户点击右上角分享

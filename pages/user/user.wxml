@@ -54,8 +54,8 @@
 <view class='report'>
    <!--功能盒模型  -->
     <view class='function'>
-      <navigator url="/pages/reports/reports">
-        <text class='reporttext'>直播报告</text>
+      <navigator url="/pages/programs/programs">
+        <text class='reporttext'>我的播单</text>
         <image class='nameicon' src='/images/righticon.png'></image>
       </navigator>
     </view>

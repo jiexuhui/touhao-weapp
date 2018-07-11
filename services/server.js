@@ -121,6 +121,69 @@ function applyProgram(params) {
   });
 }
 
+function catelogList(params) {
+  return new Promise(function (resolve, reject) {
+    //登录远程服务器
+    util.request(api.CatelogList, params, 'POST').then(res => {
+      if (res.code === 200) {
+        resolve(res);
+      } else {
+        reject(res);
+      }
+    }).catch((err) => {
+      reject(err);
+    });
+  });
+}
+//获取用户播单
+function userPrograms(params) {
+  return new Promise(function (resolve, reject) {
+    //登录远程服务器
+    util.request(api.UserPrograms, params, 'POST').then(res => {
+      if (res.code === 200) {
+        resolve(res);
+      } else {
+        reject(res);
+      }
+    }).catch((err) => {
+      reject(err);
+    });
+  });
+}
+
+//获取用户播单内的物品
+function programgoods(params) {
+  return new Promise(function (resolve, reject) {
+    //登录远程服务器
+    util.request(api.ProgramGoods, params, 'POST').then(res => {
+      if (res.code === 200) {
+        resolve(res);
+      } else {
+        reject(res);
+      }
+    }).catch((err) => {
+      reject(err);
+    });
+  });
+}
+
+//获取用户播单内的物品
+function invalidProgram(params) {
+  return new Promise(function (resolve, reject) {
+    //登录远程服务器
+    util.request(api.invalidProgram, params, 'POST').then(res => {
+      if (res.code === 200) {
+        resolve(res);
+      } else {
+        reject(res);
+      }
+    }).catch((err) => {
+      reject(err);
+    });
+  });
+}
+
+
 module.exports = {
   userReports,
   reportDetail,
@@ -128,5 +191,9 @@ module.exports = {
   addcheckedGoods,
   checkedgoods,
   delcheckedGoods,
-  applyProgram
+  applyProgram,
+  catelogList,
+  userPrograms,
+  programgoods,
+  invalidProgram
 };
