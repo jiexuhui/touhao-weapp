@@ -1,0 +1,51 @@
+
+<view class='projectbox' >
+  <view class="cate-nav">
+    <scroll-view scroll-x="true" class="cate-nav-body" style="width: 750rpx;" scroll-left="{{scrollLeft}}">
+        <view  wx:for="{{navList}}" class="item {{ status == item.id ? 'active' : ''}}"  data-id="{{item.id}}" data-index="{{index}}" bindtap="switchCate">
+            <view class="name">{{item.name}}</view>
+        </view>
+    </scroll-view>
+  </view>
+  <!--第一部分  -->
+  <view style='margin-top:80rpx'>
+  <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
+style="height:{{180*programs.length + 100}}rpx;" >
+    <swiper-item wx:for="{{navList}}">
+      <view style="margin-top:80"  wx:if="{{programs.length>0}}">
+        <view  class='project' wx:for="{{programs}}" bindtap='jumptodetail' data-index='{{index}}'>
+            <image class='headimage' src='http://img.zcool.cn/community/01ca005b02587ba801218cf4fe698a.gif'></image>
+            <view class='projecttext'>
+              <text class='biaoti'>{{item.proname}}</text>
+              <text class='jianjie' space="emsp">直播开始时间:{{item.stime}}</text>
+              <text class='jianjie'>直播结束时间:{{item.etime}}</text>
+            </view>
+             <!-- <view>aaa</view> -->
+            <view class='pstatus_red' wx:if="{{item.status == 0}}">
+            <image class='statusimage' src='/images/a1.png'></image>
+            </view> 
+            <view class='pstatus_success' wx:if="{{item.status == 1}}">
+             <image class='statusimage' src='/images/a3.png'></image>
+            </view>
+            <view class='pstatus_pink' wx:if="{{item.status == 2}}">
+              <image class='statusimage' src='/images/a5.png'></image>
+            </view>
+        </view>
+        
+      </view>
+      <!-- </navigator> -->
+      <view class='usercenter' wx:else>
+        <!-- <image class='bg' src='/images/bg.png'></image> -->
+
+        <view class='head'>
+          <!-- <image class='headphoto' src='{{userinfo.avatarUrl}}'></image> -->
+          <view class='nicknamebg'><text class ='nickname'>暂无播单~~</text></view>
+        </view>
+        <!-- <navigator class='back' open-type="navigateBack">返回</navigator>  -->
+      </view>
+    </swiper-item>
+  </swiper>
+  </view>
+</view>
+
+

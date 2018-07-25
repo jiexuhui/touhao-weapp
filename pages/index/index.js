@@ -19,6 +19,7 @@ Page({
     addgoods:[],
     classify:[],
     activeCategoryId: 1,
+    goodsCount:0
   },
   onLoad: function () {
     this.setData({
@@ -43,7 +44,8 @@ Page({
         that.setData({
           goodslist: res.data[0],
           imgUrls: res.data[1],
-          classify: res.data[2]
+          classify: res.data[2],
+          goodsCount: res.data[3][0].count,
         });
       } else {
         util.showErrorToast(res.data.msg);

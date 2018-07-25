@@ -13,7 +13,10 @@ Page({
     userInfo: wx.getStorageSync(app.globalData.userInfoKey),
     goodsid:"",
     goodsdetail:[],
-    thumbs: []
+    thumbs: [],
+    colors: ['白色','红色','黑色','黄色'],
+    size: ['M','S','L','XL'],
+    stores:{}
   },
 
   /**
@@ -29,10 +32,27 @@ Page({
     if (bean.thumbs != "" && bean.thumbs != null){
       var thumbs = bean.thumbs.split(",");
     }
-    
     this.setData({
       goodsdetail: bean,
       thumbs: thumbs
+    });
+    this.goodsStore();
+  },
+
+  goodsStore: function() {
+    var that = this;
+    console.log(that.data.goodsdetail.goodsid);
+    server.GoodsStore({goodsid: that.data.goodsdetail.goodsid }).then(res => {
+      console.log("res:", res);
+      if (res.code === 200) {
+        this.setData({
+          colors: res.data.colors,
+          size: res.data.size,
+          stores: res.data.data,
+        });
+      } else {
+        util.showErrorToast(res.data.msg);
+      }
     });
   },
 

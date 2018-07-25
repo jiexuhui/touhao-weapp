@@ -28,16 +28,12 @@ let app = {
   },
   onShow: function (options) {
     // Do something when show.
-    let userinfo = wx.getStorageSync(USERINFOKEY)
-    if(!userinfo){
-      wx.reLaunch({
-        url: '/pages/auth/auth'
-      });
-    }else {
-      wx.reLaunch({
-        url: '/pages/index/index'
-      });
-    }
+    // let userinfo = wx.getStorageSync(USERINFOKEY)
+    // if(!userinfo){
+    //   wx.reLaunch({
+    //     url: '/pages/auth/auth'
+    //   });
+    // }
   },
   //获取用户信息
   setUserinfo: function (e) {

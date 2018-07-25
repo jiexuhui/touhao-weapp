@@ -11,47 +11,8 @@ Page({
    */
   data: {
     userInfo: wx.getStorageSync('userinfo'),
-    isbook: 1,
-    startDate: "",
-    startTime: "",
-    endTime: "",
-    params: {
-      startTime: "",
-      endTime: "",
-      livename: "",
-      openid: "",
-      goodslist:"",
-      isbook:1,
-      formId: ""
-    },
+    program:{},
     cgoods: []
-  },
-
-  /**
-  * 设置开始日期
-  */
-  setStartDate: function (e) {
-    this.setData({
-      startDate: e.detail.value
-    })
-  },
-
-  /**
-  * 设置开始时间
-  */
-  setStartTime: function (e) {
-    this.setData({
-      startTime: e.detail.value
-    })
-  },
-  /**
-  * 设置结束时间
-  */
-  setEndTime: function (e) {
-    console.log(e);
-    this.setData({
-      endTime: e.detail.value
-    })
   },
 
   reviewSubmit: function (e) {
@@ -87,14 +48,14 @@ Page({
     that.data.params.openid = userinfo.openid;
 
     let goodslist = [];
-    for(let i of that.data.cgoods) {
+    for (let i of that.data.cgoods) {
       goodslist.push(i.goodsid);
-    } 
+    }
     that.data.params.goodslist = goodslist.toString();
     server.applyProgram(that.data.params).then(res => {
       console.log("res:", res);
       if (res.code === 200) {
-        // prevPage.goodsList();
+        prevPage.goodsList();
         wx.showToast({
           title: '提交成功',
           icon: 'success',
@@ -113,15 +74,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var bean = JSON.parse(options.model);
     this.setData({
       userInfo: wx.getStorageSync('userinfo'),
+      program: bean
     });
-    this.checkedGoods();
+    this.programgoods();
   },
 
-  checkedGoods: function() {
+  programgoods: function () {
     let that = this;
-    server.checkedgoods({ openid: that.data.userInfo.openid }).then(res => {
+    server.programgoods({ goodslist: that.data.program.goodslist }).then(res => {
       console.log("res:", res);
       if (res.code === 200) {
         that.setData({
@@ -133,85 +96,93 @@ Page({
     });
   },
 
-  delGoods: function (e) {
-    let that = this;
+  invalidProgram: function (e) {
+    var that = this;
     var pages = getCurrentPages();
     var currPage = pages[pages.length - 1];   //当前页面
     var prevPage = pages[pages.length - 2];
-    console.log("pages:",pages);
-    console.log(e);
-    var index = e.currentTarget.dataset.index;
-
-    server.delcheckedGoods({ openid: that.data.userInfo.openid, goodsid: that.data.cgoods[index].goodsid }).then(res => {
-      console.log("res:", res);
-      if (res.code === 200) {
-        that.data.cgoods.splice(index, 1);
-        that.setData({
-          cgoods: that.data.cgoods
-        });
-        if(pages.length >= 2){
-          if (prevPage.data.goodsdetail) {
-            prevPage.data.goodsdetail.isadd = 0;
-            prevPage.setData({
-              goodsdetail: prevPage.data.goodsdetail
-            });
-          } 
+    wx.showModal({
+      title: '确定取消吗？',
+      content: '',
+      success: function (res) {
+        if (res.confirm) {
+          server.invalidProgram({ id: that.data.program.id }).then(res => {
+            console.log("res:", res);
+            if (res.code === 200) {
+              that.data.program.status = 2;
+              that.setData({
+                program: that.data.program
+              });
+              wx.showToast({
+                title: '取消成功',
+                icon: 'success',
+                duration: 2000
+              })
+              prevPage.goodsList();
+            } else {
+              util.showErrorToast(res.data.msg);
+            }
+          });
+        } else if (res.cancel) {
+          console.log('用户点击取消')
         }
-        // prevPage.goodsList();
-        // pages[0].goodsList();
-      } else {
-        util.showErrorToast(res.data.msg);
       }
-    });
+    })
+  },
 
+  //跳转详情页
+  viewreport: function (e) {
+    wx.navigateTo({
+      url: '/pages/pageopen/pageopen?id=' + this.data.program.reportid,
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })

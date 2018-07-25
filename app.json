@@ -14,12 +14,13 @@
     "pages/catalog/catalog",
     "pages/category/category",
     "pages/programs/programs",
-    "pages/programdetail/programdetail"
+    "pages/programdetail/programdetail",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "微岛主播小助手",
+    "navigationBarTitleText": "博弈电商直播助手",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

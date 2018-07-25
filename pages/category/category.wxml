@@ -1,0 +1,32 @@
+  <!-- <view class="container">  -->
+<view class="cate-nav">
+    <scroll-view scroll-x="true" class="cate-nav-body" style="width: 750rpx;" scroll-left="{{scrollLeft}}">
+        <view  wx:for="{{navList}}" class="item {{ id == item.id ? 'active' : ''}}" data-id="{{item.id}}" data-index="{{index}}" bindtap="switchCate"  data-current="{{index}}">
+            <view class="name">{{item.name}}</view>
+        </view>
+    </scroll-view>
+</view>
+
+<swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
+style="height:{{scrollHeight + 500}}rpx">
+  <swiper-item wx:for="{{navList}}">
+    <scroll-view scroll-y="true" scroll-top="{{scrollTop}}" style="height:{{scrollHeight}};">
+      <view class="cate-item">
+          <view class="h">
+            <text class="name">{{currentCategory.name}}</text>
+            <text class="desc">{{currentCategory.front_name}}</text> 
+          </view>
+          <view class="b">
+            <view class="item {{(iindex + 1) % 2 == 0 ? 'item-b' : ''}}"   url="/pages/goods/goods?id={{iitem.id}}" wx:for="{{goodsList}}" wx:for-item="iitem" wx:for-index="iindex" wx:key="index">
+              <view bindtap='jumptodetail' data-index='{{iindex}}'>
+                <image class="img" src="{{iitem.thumb_main}}" background-size="cover"></image>
+                <text class="name">{{iitem.goods_name}}</text>
+                <text class="price">￥{{iitem.price}}</text>
+              </view>
+            </view>
+          </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+</swiper>
+ <!-- </view>   -->

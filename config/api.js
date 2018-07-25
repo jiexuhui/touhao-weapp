@@ -18,4 +18,6 @@ module.exports = {
   CatelogList: ApiRootUrl + 'cateloglist',
   ProgramGoods: ApiRootUrl + 'programgoods',
   invalidProgram: ApiRootUrl + 'invalidprogram',
+  SearchIndex: ApiRootUrl + 'searchindex',
+  GoodsStore: ApiRootUrl + 'goodsstore',
 };

@@ -1,0 +1,66 @@
+<!--pages/user/user.wxml-->
+
+<view class='usercenter'>
+  <!-- <image class='bg' src='/images/bg.png'></image> -->
+</view>
+
+
+<!-- <form bindsubmit="reviewSubmit" bindreset="formReset" report-submit='true'> -->
+<!--基本信息盒模型  -->
+<view class='basic'>
+  <!--名字部分  -->
+  <view class='namebox'>
+    <text class='name'>我的播单名称：</text>
+    <!-- <image class='nameicon' src='/images/righticon.png'></image> -->
+    <text name="livename" placeholder-class='textcolor' class='nametext'>{{program.proname}}</text>
+  </view>
+
+  <!-- <picker class='title1' mode="time" start="08:00" bindchange="setStartTime" name="livestime"> -->
+    <view class='namebox'>
+      <text class='name'>直播开始时间：</text>
+      <!-- <image class='nameicon' src='/images/righticon.png'></image> -->
+      <text  placeholder-class='textcolor' class='nametext' >{{program.stime}}</text>
+    </view>
+  <!-- </picker> -->
+
+  <!-- <picker name="liveetime"  class='title1' mode="time" start="20:00" bindchange="setEndTime"> -->
+    <view class='namebox'>
+      <text class='name'>直播结束时间：</text>
+      <!-- <image class='nameicon' src='/images/righticon.png'></image> -->
+      <text placeholder-class='textcolor' class='nametext'>{{program.etime}}</text>
+    </view>
+  <!-- </picker> -->
+
+  <view class='projectbox'>
+    <!--第一部分  -->
+    <view class='project' wx:for="{{cgoods}}">
+        <image class='headimage' src='{{item.thumb_main}}'></image>
+        <view class='projecttext'>
+          <text class='biaoti'>{{item.goodsname}}</text>
+          <text class='jianjie' space="emsp">价格：{{item.price}} 库存:{{item.storenum}}</text>
+          <!-- <text class='jianjie'>每件佣金:￥{{item.commission}}</text> -->
+          <text class='field'>标签：{{item.tagname}}</text>
+        </view>
+        <!-- <view >
+          <image class="anniu1" src='/images/delete.png' data-index='{{index}}' bindtap='delGoods'></image>
+        </view> -->
+    </view>
+  </view>
+
+  <view wx:if="{{program.status == 0}}">
+    <button bindtap="invalidProgram" class="review" type="warn" hover-class="other-button-hover"> 取消播单 </button>   
+  </view>
+  <view wx:elif="{{program.status == 2}}">
+    <button bindtap="invalidProgram" class="review" type="warn" hover-class="other-button-hover" disabled='true'> 播单已取消 </button>   
+  </view>
+  <view wx:else>
+    <view wx:if="{{program.hasreport != 0 && program.status != 0}}">
+      <button bindtap="viewreport" class="review" type="warn" hover-class="other-button-hover"> 查看报告 </button>   
+    </view>
+    <view wx:else>
+      <button class="review" type="warn" hover-class="other-button-hover" disabled='true'> 暂无报告 </button>   
+    </view>
+  </view>
+</view>
+<!-- </form> -->
+

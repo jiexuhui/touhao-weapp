@@ -183,6 +183,38 @@ function invalidProgram(params) {
   });
 }
 
+//获取用户播单内的物品
+function SearchIndex(params) {
+  return new Promise(function (resolve, reject) {
+    //登录远程服务器
+    util.request(api.SearchIndex, params, 'POST').then(res => {
+      if (res.code === 200) {
+        resolve(res);
+      } else {
+        reject(res);
+      }
+    }).catch((err) => {
+      reject(err);
+    });
+  });
+}
+
+//获取用户播单内的物品
+function GoodsStore(params) {
+  return new Promise(function (resolve, reject) {
+    //登录远程服务器
+    util.request(api.GoodsStore, params, 'POST').then(res => {
+      if (res.code === 200) {
+        resolve(res);
+      } else {
+        reject(res);
+      }
+    }).catch((err) => {
+      reject(err);
+    });
+  });
+}
+
 
 module.exports = {
   userReports,
@@ -195,5 +227,7 @@ module.exports = {
   catelogList,
   userPrograms,
   programgoods,
-  invalidProgram
+  invalidProgram,
+  SearchIndex,
+  GoodsStore
 };

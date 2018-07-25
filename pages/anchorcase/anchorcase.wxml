@@ -46,8 +46,8 @@
         <view class='projecttext'>
           <text class='biaoti'>{{item.goods_name}}</text>
           <text class='jianjie' space="emsp">价格：{{item.price}} 库存:{{item.storenum}}</text>
-          <text class='jianjie'>每件佣金:￥{{item.commission}}</text>
-          <text class='field'>标签：{{item.tagname}}</text>
+          <!-- <text class='jianjie'>每件佣金:￥{{item.commission}}</text> -->
+          <text class='field'>标签：{{item.tagname == null?'':item.tagname}}</text>
         </view>
         <view >
           <image class="anniu1" src='/images/delete.png' data-index='{{index}}' bindtap='delGoods'></image>
