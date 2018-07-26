@@ -2,7 +2,7 @@
 
 <!--index.wxml-->
 <!--商品主图  -->
-<image class="toutu" mode="aspectFit" src='{{goodsdetail.thumb_main}}'></image>
+<image class="toutu" mode="scaleToFill" src='{{goodsdetail.thumb_main}}'></image>
 <view class="service-policy">
   <!-- <view class="item">30天无忧退货</view> -->
   <!-- <view class="item">48小时快速退款</view> -->
@@ -13,30 +13,30 @@
     <text class="title1">{{goodsdetail.goods_name}}</text>
     <text class="desc">{{goodsdetail.tagname == null ? '':goodsdetail.tagname}}</text>
     <text class='price' space='emsp'>直播专享价：￥{{goodsdetail.price}}</text>
-     <text class='wenben1' space='emsp'> 库存：{{goodsdetail.store == null?0:goodsdetail.store}}</text> 
+     <!-- <text class='wenben1' space='emsp'> 库存：{{goodsdetail.store == null?0:goodsdetail.store}}</text>  -->
     <!-- <text class="price" space='emsp'>佣金：￥{{goodsdetail.commission}}</text> -->
   </view>
 </view>
 
-<view class="table">
+<view class="table" wx:if="{{colors.length>0}}">
   <view class="tr bg-w">
     <view class="th">颜色/尺码</view>
     <block wx:for="{{size}}" wx:key="{{index}}">
-      <view class="td-1"  style="width:{{(73/colors.length)}}%">{{item}}</view>
+      <view class="td-1"  style="width:{{(73/size.length)}}%">{{item}}</view>
     </block>
   </view>
   <block wx:for="{{colors}}" wx:key="{{index}}">
     <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
       <view class="td-1" selectable="true" style="width:{{}}">{{item}}</view>
       <block wx:for="{{stores[index]}}" wx:key="{{index}}">
-        <view class="td-1" selectable="true" scroll-y="true"   style="width:{{(73/colors.length)}}%">{{item}}</view>
+        <view class="td-1" selectable="true" scroll-y="true"   style="width:{{(73/size.length)}}%">{{item}}</view>
       </block>
       <!--view class="td">{{item.type}}</view-->
     </view>
     <view class="tr bg-g2" wx:else>
       <view class="td-1" selectable="true">{{item}}</view>
       <block wx:for="{{stores[index]}}" wx:key="{{index}}">
-        <view class="td-1" selectable="true" scroll-y="true"   style="width:{{(73/colors.length)}}%">{{item}}</view>
+        <view class="td-1" selectable="true" scroll-y="true"   style="width:{{(73/size.length)}}%">{{item}}</view>
       </block>
     </view>
   </block>
@@ -49,7 +49,7 @@
 <!--内容板块  -->
 <view class="content" wx:for="{{thumbs}}" wx:key="index" >
 
-  <image mode="aspectFit" class='contentimg1' src='{{item}}'></image>
+  <image mode="widthFix" class='contentimg1' src='{{item}}'></image>
 
 </view>
 
@@ -58,9 +58,9 @@
   <image class="add_icon" src='/images/addlist.png'  bindtap='adddetial'></image>
 </view>
 <view wx:else>
-  <image  mode="aspectFit" class="add_icon" src='/images/add.png' bindtap='adddetial'></image>
+  <image  mode="widthFix" class="add_icon" src='/images/add.png' bindtap='adddetial'></image>
 </view>
 
-  <view>
-    <image class="list_icon" src='/images/list.png'  bindtap='jumplist'></image>
-  </view>
+<view>
+  <image class="list_icon" src='/images/list.png'  bindtap='jumplist'></image>
+</view>

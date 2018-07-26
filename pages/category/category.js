@@ -39,13 +39,24 @@ Page({
   },
   // 滚动切换标签样式
   switchTab: function (e) {
+    var that = this;
     console.log("detail:", e.detail);
     var id = this.data.navList[e.detail.current].id;
-    this.setData({
+    let navListCount = that.data.navList.length;
+    for (let i = 0; i < navListCount; i++) {
+      if (that.data.navList[i].id == id) {
+        if (i < 6) {
+          that.setData({
+            scrollLeft: 0
+          });
+        }
+        break;
+      }
+    }
+    that.setData({
       id: id
     });
-
-    this.getCategoryInfo();
+    that.getCategoryInfo();
   },
 
   getCategoryInfo: function () {
@@ -64,7 +75,8 @@ Page({
           currentIndex += 1;
           if (that.data.navList[i].id == that.data.id) {
             that.setData({
-              currentCategory: that.data.navList[i]
+              currentCategory: that.data.navList[i],
+              currentTab: i
             });
             break;
           }
@@ -86,6 +98,12 @@ Page({
     var index = e.currentTarget.dataset.index;
     var goodsid = that.data.goodsList[index].goodsid;
     var model = JSON.stringify(that.data.goodsList[index]);
+    var goodsdetailStore = wx.getStorageSync("goodsdetail");
+    if(goodsdetailStore) {
+      wx.removeStorageSync("goodsdetail");
+    }
+    wx.setStorageSync("goodsdetail", (that.data.goodsList[index]))
+    console.log(model);
     wx.navigateTo({
       url: '/pages/goods/goods?model=' + model,
     })
@@ -134,6 +152,7 @@ Page({
         scrollLeft: currentTarget.offsetLeft
       });
     }
+    console.log("clientX:" + clientX + "currentTarget:" + currentTarget)
     this.setData({
       id: event.currentTarget.dataset.id
     });

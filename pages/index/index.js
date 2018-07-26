@@ -82,6 +82,11 @@ Page({
     var index = e.currentTarget.dataset.index;
     var goodsid = that.data.goodslist[index].goodsid;
     var model = JSON.stringify(that.data.goodslist[index]);
+    var goodsdetailStore = wx.getStorageSync("goodsdetail");
+    if (goodsdetailStore) {
+      wx.removeStorageSync("goodsdetail");
+    }
+    wx.setStorageSync("goodsdetail", (that.data.goodslist[index]))
     wx.navigateTo({
       url: '/pages/goods/goods?model=' + model,
     })

@@ -1,5 +1,5 @@
-// const ApiRootUrl = 'https://top.v-islands.com/api/';
-const ApiRootUrl = 'http://127.0.0.1:3010/api/';
+const ApiRootUrl = 'https://top.v-islands.com/api/';
+// const ApiRootUrl = 'http://127.0.0.1:3010/api/';
 
 module.exports = {
   IndexUrl: ApiRootUrl + 'index/index', //首页数据接口

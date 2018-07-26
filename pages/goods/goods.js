@@ -26,9 +26,11 @@ Page({
     this.setData({
       userInfo: app.getUserinfo()
     });
-    var bean = JSON.parse(options.model);
+    console.log("model:", options.model);
+    // var bean = JSON.parse(options.model);
     console.log(bean);
     var thumbs = [];
+    var bean = wx.getStorageSync("goodsdetail")
     if (bean.thumbs != "" && bean.thumbs != null){
       var thumbs = bean.thumbs.split(",");
     }
