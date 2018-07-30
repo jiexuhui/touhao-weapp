@@ -31,6 +31,7 @@
     color: #333;
     font-size: 30rpx;
     width: auto;
+    text-overflow: ellipsis;
 }
 
 .cate-nav .item.active .name{
@@ -105,6 +106,7 @@
   padding: 0 20rpx;
   font-size: 30rpx;
   color: #333;
+  text-overflow: ellipsis;
 }
 
 .cate-item .item .price{

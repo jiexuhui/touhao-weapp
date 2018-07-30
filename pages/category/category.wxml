@@ -8,7 +8,7 @@
 </view>
 
 <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
-style="height:{{scrollHeight + 500}}rpx">
+style="height:{{goodsList.length*110+220}}px">
   <swiper-item wx:for="{{navList}}">
     <scroll-view scroll-y="true" scroll-top="{{scrollTop}}" style="height:{{scrollHeight}};">
       <view class="cate-item">

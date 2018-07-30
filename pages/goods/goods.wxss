@@ -210,6 +210,7 @@
   border: 2px solid darkgray;
   margin-right: 1rem;
   margin-left: 1rem;
+  margin-top:20rpx
 }
 .tr {
   display: flex;
