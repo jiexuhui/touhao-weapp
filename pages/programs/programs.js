@@ -35,7 +35,7 @@ Page({
     }); 
     wx.getSystemInfo({
       success: function (res) {
-        that.setData({
+        this.setData({
           scrollHeight: res.windowHeight
         });
       }

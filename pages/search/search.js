@@ -99,9 +99,9 @@ Page({
           searchStatus: true,
           categoryFilter: false,
           goodsList: res.data[0],
-          filterCategory: res.data.filterCategory,
-          page: res.data.currentPage,
-          size: res.data.numsPerPage
+          // filterCategory: res.data.filterCategory,
+          // page: res.data.currentPage,
+          // size: res.data.numsPerPage
         });
       }
 
@@ -188,6 +188,11 @@ Page({
     var index = e.currentTarget.dataset.index;
     var goodsid = that.data.goodsList[index].goodsid;
     var model = JSON.stringify(that.data.goodsList[index]);
+    var goodsdetailStore = wx.getStorageSync("goodsdetail");
+    if (goodsdetailStore) {
+      wx.removeStorageSync("goodsdetail");
+    }
+    wx.setStorageSync("goodsdetail", (that.data.goodsList[index]))
     wx.navigateTo({
       url: '/pages/goods/goods?model=' + model,
     })

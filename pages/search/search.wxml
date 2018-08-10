@@ -54,14 +54,15 @@
         <text class="name">{{item.goods_name}}</text>
         <view style='display:flex;'>
           <view class="goods-price">
-            <view><text space='&emsp'>佣金：¥ {{item.commission}}</text></view>
-            <view><text space='&emsp'>库存：{{item.storenum}}</text></view>
+            <!-- <view><text space='&emsp'>佣金：¥ {{item.commission}}</text></view>
+            <view><text space='&emsp'>库存：{{item.price}}</text></view> -->
+             <text class="price">￥{{item.price}}</text>
           </view>
-          <view  wx:if="{{item.isadd==0}}" style='padding-left:20px;'>
+          <!-- <view  wx:if="{{item.isadd==0}}" style='padding-left:20px;'>
               <image class="anniu1" src='/images/anniu.png' data-index='{{index}}' bindtap='addGoods'></image>
-          </view>
+          </view> -->
             <!-- <view wx:elif="{{diao==15}}">还算是个中国人</view> -->
-          <view  style='padding-left:20px;' wx:else><image  mode='aspectFill' class="anniu1" src='/images/add.png' data-index='{{index}}'></image></view>
+          <!-- <view  style='padding-left:20px;' wx:else><image  mode='aspectFill' class="anniu1" src='/images/add.png' data-index='{{index}}'></image></view> -->
         </view>   
       </view>
     </view>

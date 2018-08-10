@@ -68,8 +68,8 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: '微岛主播小助手',
-      desc: '微岛主播小助手',
+      title: '博弈选款助手',
+      desc: '博弈选款助手',
       path: '/pages/index/index'
     }
   },

@@ -12,17 +12,17 @@
   <view class='desc1'>
     <text class='touxiangbiaoti2'>时间：{{report[0][0].pstime}}</text>
     <text class='touxiangbiaoti2'>时长：{{report[0][0].ptime}}分钟</text>
-    <text class='touxiangbiaoti2' space='emsp'>总销量：{{report[0][0].stotal}}件</text>
+    <text class='touxiangbiaoti2' space='emsp'>总销量：{{report[3][0].sum}}件</text>
   </view>
 
 </view> 
 
 <!--第三板块分割线  -->
  <text class='fengexian3'></text> 
-
+<!-- 
  <import src="/pages/template/indexPopup.wxml" />
  <template is="userPannel" data="{{isShowUserPannel}}" /> 
- <view class='add_symbol' bindtap='showUserPannel'></view>  
+ <view class='add_symbol' bindtap='showUserPannel'></view>   -->
 
 <view class='projectbox'>
   <text class='headingtext'>详情</text>
@@ -30,9 +30,9 @@
   <view class='project' wx:for="{{report[1]}}">
     <image class='headimage' src='{{item.mainimg}}'></image>
     <view class='projecttext'>
-      <text class='biaoti' space='emsp'>{{item.goodsname}} 价格:￥{{item.price}}</text>
-      <text class='touxiangbiaoti2' space='emsp'>销量 {{item.num}}</text>
-      <text class='field'>标签： {{item.tags}}</text>
+      <text class='biaoti' space='emsp'>{{item.goodsname}}</text>
+      <text class='touxiangbiaoti2' space='emsp'>销量：{{item.num}} 价格:￥{{item.price}}</text>
+      <!-- <text class='field'>标签： {{item.tags}}</text> -->
     </view>
   </view>
 </view>

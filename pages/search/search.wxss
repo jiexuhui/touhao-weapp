@@ -307,7 +307,7 @@ page{
 .cate-item .item .price{
   display: block;
   width: 365.625rpx;
-  height: 30rpx;
+  height: 40rpx;
   text-align: center;
   font-size: 30rpx;
   color: #b4282d;
