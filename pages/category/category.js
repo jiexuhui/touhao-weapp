@@ -17,7 +17,8 @@ Page({
     scrollHeight: 0,
     page: 1,
     size: 10000,
-    currentTab:0
+    currentTab:0,
+    pageEnd: false
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
@@ -47,18 +48,45 @@ Page({
       if (that.data.navList[i].id == id) {
         if (i < 6) {
           that.setData({
-            scrollLeft: 0
+            scrollLeft: 0,
           });
         }
         break;
       }
     }
     that.setData({
-      id: id
+      id: id,
+      page: 1,
+      goodsList: [],
+      pageEnd: false,
+      scrollTop: 0
     });
     that.getCategoryInfo();
   },
+  //页面滑动到底部
+  bindDownLoad: function () { 
+    wx.showLoading({
+      title: '加载中',
+    })
+    var that = this;
+    if(that.data.pageEnd){
+      wx.hideLoading()
+      return;
+    }
+    console.log("lower");
+    var curpage = that.data.page + 1;
+    that.setData({
+      page: curpage
+    });
+    that.goodsList();
+    wx.hideLoading();
+  },
 
+  // scroll: function (event) {
+  //   this.setData({
+  //     scrollTop: event.detail.scrollTop
+  //   })
+  // },
   getCategoryInfo: function () {
     let that = this;
     server.catelogList({ id: this.data.id })
@@ -87,7 +115,6 @@ Page({
           });
         }
         that.goodsList();
-        
       });
   },
 
@@ -120,13 +147,22 @@ Page({
   },
   goodsList: function () {
     var that = this;
-    server.goodsList({ openid: that.data.userInfo.openid, category: that.data.id }).then(res => {
+    server.goodsList({ openid: that.data.userInfo.openid, category: that.data.id, page: that.data.page }).then(res => {
       // console.log("res:", res);
       // console.log("data0:", res.data);
       if (res.code === 200) {
-        that.setData({
-          goodsList: res.data[0]
-        });
+        if(res.data[0].length>0) {
+          wx.setStorageSync("categoryGoods", res.data[0])
+          var goodsList = that.data.goodsList.concat(wx.getStorageSync("categoryGoods"));
+          that.setData({
+            goodsList: goodsList
+          });
+        }else {
+          that.setData({
+            pageEnd: true,
+          });  
+        }
+        
       } else {
         util.showErrorToast(res.data.msg);
       }
@@ -136,6 +172,7 @@ Page({
     // 页面关闭
   },
   switchCate: function (event) {
+    wx.removeStorageSync("categoryGoods");
     var index = event.currentTarget.dataset.index;
     if (this.data.id == event.currentTarget.dataset.id) {
       return false;
@@ -154,7 +191,11 @@ Page({
     }
     console.log("clientX:" + clientX + "currentTarget:" + currentTarget)
     this.setData({
-      id: event.currentTarget.dataset.id
+      id: event.currentTarget.dataset.id,
+      page: 1,
+      goodsList: [],
+      pageEnd: false,
+      scrollTop: 0
     });
 
     this.getCategoryInfo();

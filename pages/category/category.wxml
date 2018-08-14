@@ -1,16 +1,16 @@
   <!-- <view class="container">  -->
 <view class="cate-nav">
     <scroll-view scroll-x="true" class="cate-nav-body" style="width: 750rpx;" scroll-left="{{scrollLeft}}">
-        <view  wx:for="{{navList}}" class="item {{ id == item.id ? 'active' : ''}}" data-id="{{item.id}}" data-index="{{index}}" bindtap="switchCate"  data-current="{{index}}">
+        <view  wx:for="{{navList}}" class="item {{ id == item.id ? 'active' : ''}}" data-id="{{item.id}}" data-index="{{index}}" bindtap="switchCate"  data-current="{{index}}" wx:key="kindex">
             <view class="name">{{item.name}}</view>
         </view>
     </scroll-view>
 </view>
 
 <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
-style="height:{{goodsList.length*110+220}}px">
-  <swiper-item wx:for="{{navList}}">
-    <scroll-view scroll-y="true" scroll-top="{{scrollTop}}" style="height:{{scrollHeight}};">
+style="height:{{scrollHeight}}px">
+  <swiper-item wx:for="{{navList}}"  wx:key="nindex">
+    <scroll-view scroll-y="true" scroll-top="{{scrollTop}}" style="height:{{scrollHeight}}px;" bindscrolltolower="bindDownLoad">
       <view class="cate-item">
           <!-- <view class="h">
             <text class="name">{{currentCategory.name}}</text>
